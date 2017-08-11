@@ -11,7 +11,11 @@
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^7.4.2",
     "morgan": "~1.8.1",
+    "pg": "^7.1.0",
+    "pwd": "^1.1.0",
+    "sequelize": "^4.4.2",
     "serve-favicon": "~2.4.2"
   }
 }
