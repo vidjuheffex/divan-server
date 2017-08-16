@@ -2,11 +2,14 @@ var express = require('express');
 var router = express.Router();
 const models = require('../models');
 var pass = require('pwd');
+var jwt = require('jsonwebtoken');
+var jwtconfig = require('../config/jwtconfig.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   return res.send("Sent");
 });
+
 
 router.post("/signup", (req,res) => {
   let {username, email, password, first_name, last_name} = req.body;
@@ -45,7 +48,17 @@ router.post("/login", (req,res) => {
       .then(function(result){
         let hash = result.hash;
         if(user.hash === hash){
-          return res.send({"msg": "success"});
+          var token = jwt.sign(
+            {
+              user: user
+            },
+            jwtconfig.secret,
+            {
+              expiresIn: 24 * 60 * 60 * 1000
+            });
+          return res.send({"msg": "success",
+                           "token": token,
+                           "user": user});
         } else {
           return res.send({"msg": "failure"});
         }
