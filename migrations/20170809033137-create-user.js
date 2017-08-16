@@ -8,6 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      username: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      email: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       first_name: {
         allowNull: false,
         type: Sequelize.STRING
@@ -21,11 +29,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       salt: {
-                allowNull: false,
+        allowNull: false,
         type: Sequelize.STRING
       },
       role: {
-                allowNull: false,
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
